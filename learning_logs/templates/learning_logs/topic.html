@@ -1,0 +1,44 @@
+{% extends 'learning_logs/base.html' %}
+
+{% block header %}
+    <h2>分类： {{ topic }}</h2>
+{% endblock header %}
+
+{% block content %}
+
+  <p>
+    <h3>
+      <a href="{% url 'learning_logs:new_entry' topic.id %}">
+        新建笔记
+      </a>
+    </h3>
+
+  </p>
+
+  <ul>
+    {% for entry in entries %}
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4>
+          <!--竖线表示模板过滤器-->
+          {{ entry.date_added|date:'Y.m.d H:i' }}
+          <small>
+           <a href="{% url 'learning_logs:edit_entry' entry.id%}">
+               编辑笔记
+           </a>
+          </small>
+        </h4>
+      </div>
+      <div class="panel-body">
+        <h4>
+          <!-- linebreaks表示将包含换行符的长条目转换成浏览器能够理解的文本块-->
+          {{ entry.text|linebreaks }}
+        </h4>
+
+      </div>
+    </div> <!--panel-->
+    {% empty %}
+      该分类下没有笔记
+    {% endfor %}
+  </ul>
+{% endblock content %}
