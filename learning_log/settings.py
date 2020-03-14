@@ -22,9 +22,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '9juu_iv_py(a8)(%56=h&0l04*esgnxnacl8(jqi1_2^7xcgc$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1','timikays.club','111.229.251.224']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1','timikays.club']
 
 # Application definition
 
@@ -118,6 +118,7 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
 # 设置登录页面
 LOGIN_URL = '/users/login/'
 # django-bootstrap3的设置
